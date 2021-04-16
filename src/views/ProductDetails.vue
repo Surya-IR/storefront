@@ -83,7 +83,8 @@ export default{
 .main-body{
     width: 60%;
     margin-left: 20%;
-    margin-top: 5%
+    margin-top: 5%;
+    margin-bottom: 5%
 }
 .int-button{
     margin-top: 5%;

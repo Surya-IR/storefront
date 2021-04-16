@@ -1,30 +1,29 @@
 <template>
-<div class = "background">
-    <router-link to="/cart"><button class = "btn btn-info cart-button">Cart</button></router-link>
-<h2 class = "page-header">LIST OF AVAILABLE PRODUCTS</h2>
-<div :key="products.id" v-for="products in this.ProductList">
-    <b-card class = "product-body">
-        <div class = "row main-format">
-            <div class = "col-sm-3">
-                <img class = "prod-img" :src ="getImg(products.img)" alt= "prod-img"/>
-            </div>
-            <div class = "col-sm-7">
-                <h2 class = "product-header">{{products.name}}</h2>
-                <h2 class = "product-price">Price: Rp. {{products.price}}</h2>
-            </div>
-            <div class = "col-sm-2">
-                <button class="btn btn-success det-button" type = "button" @click ="getDetails(products.id)">Details</button>
-                <button class="btn btn-primary det-button" type = "button" @click ="CartFromList(products.id)">Add to Cart</button>
-            </div>
+<div>
+    
+    <div class = "background">
+        <router-link to="/cart"><button class = "btn btn-info cart-button">Cart</button></router-link>
+        <h2 class = "page-header">LIST OF AVAILABLE PRODUCTS</h2>
+        <div :key="products.id" v-for="products in this.ProductList">
+            <b-card class = "product-body">
+                <div class = "row main-format">
+                    <div class = "col-sm-3">
+                        <img class = "prod-img" :src ="getImg(products.img)" alt= "prod-img"/>
+                    </div>
+                    <div class = "col-sm-7">
+                        <h2 class = "product-header">{{products.name}}</h2>
+                        <h2 class = "product-price">Price: Rp. {{products.price}}</h2>
+                    </div>
+                    <div class = "col-sm-2">
+                        <button class="btn btn-success det-button" type = "button" @click ="getDetails(products.id)">Details</button>
+                        <button class="btn btn-primary det-button" type = "button" @click ="CartFromList(products.id)">Add to Cart</button>
+                    </div>
             
-        </div>
-    
-
-    
-    
-    
+                </div>
     </b-card>
 </div>
+    </div>
+    
 </div>
 </template>
 <script>
@@ -63,9 +62,12 @@ export default{
 }
 </script>
 <style scoped>
+
 .background{
     padding-top: 5%;
-    padding-bottom: 5%
+    padding-bottom: 5%;
+    background-color: #f0ecec;
+    
 }
 .cart-button{
     float: right;
@@ -92,7 +94,8 @@ export default{
 }
 .product-body{
     margin-left: 10%;
-    width: 80%
+    width: 80%;
+    border-radius: 10px
 }
 .det-button{
     float:right;
