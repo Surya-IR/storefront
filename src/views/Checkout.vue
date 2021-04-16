@@ -25,5 +25,7 @@ export default{
 .back-button{
     margin-left: 45%;
     margin-right: 40%;
+    margin-bottom: 20%;
+    margin-top: 5%
 }
 </style>
