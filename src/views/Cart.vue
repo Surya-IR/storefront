@@ -4,39 +4,59 @@
         <h2 class = "cart-title">ITEMS IN CART:</h2>
 
            
-
-        <div :key="index" v-for="(products, index) in this.CartList">
-            <b-card class = "prod-body">
-                <div class = "row">
-                    <div class = "col-sm-3">
-                        <img class = "prod-img" :src ="getImg(products.img)" alt= "prod-img"/>
-                    </div>
-                    <div class = "col-sm-6">
-                    <h2 class = "prod-title">{{ products.name }}</h2>
-                    <h2 class = "prod-info">Product ID: {{ products.id }}</h2>
-                    <h2 class = "prod-info">Price: {{ products.price }}</h2>
+         <div class = "row cart-container">
+                    <span class = "col-sm-2" v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}">Preview</span>
+                    <span class = "col-sm-2"  v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}">Name</span>
+                    <span class = "col-sm-1"  v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}">Price</span>
+                    <span class = "col-sm-2"  v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}">Color</span>
+                    <span class = "col-sm-2"  v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}">Size</span>
+                    <span class = "col-sm-1"  v-bind:style = "{fontSize: '1.2em',
+    fontWeight: 600,
+    marginLeft: '1%'}"></span>
                     
-                    </div>
+                </div>
+        <div :key="index" v-for="(products, index) in this.CartList">
+            
+                <div class = "row cart-content">
                     <div class = "col-sm-2">
-                        <button class = "btn btn-danger rm-button" type="button" @click="RemoveFromCart(index)">Remove</button>
+                        <img class = "prod-img" :src ="getImg(products.name)" alt= "prod-img"/>
+                    </div>
+                    
+                    <h2 class = "col-sm-2 prod-title">{{ products.name }}</h2>
+                    <h2 class = "col-sm-1 prod-title">{{ products.price }}</h2>
+                    <h2 class = "col-sm-2 prod-title">{{ products.selectedColor }}</h2>
+                    <h2 class = "col-sm-2 prod-title">{{ products.selectedSize }}</h2>
+                    
+                    
+                    <div class = "col-sm-1">
+                        <button class = "btn btn-danger rm-button" type="button" @click="RemoveFromCart(index)">X</button>
                     </div>
                     
                 </div>
-            
-            </b-card>
+
         </div>
         
         <div class = "row">
             <div class = "col-sm-12">
                 <h2 v-if = "Empty" class = "empty-notif">Cart Is Empty!</h2>
                 <h4 class = "total">TOTAL: Rp.{{this.totalPrice}}</h4>
+                <button class = "btn btm-button" type="button" @click = "Checkout()">Check Out</button>
+                
             </div>
-            <div class = "col-sm-5"></div>
-            <div class = "col-sm-3">
-                <router-link to ="/"><button class = "btn btn-danger btm-button" type="button">&lt;&lt;Back</button></router-link>
-        <button class = "btn btn-success btm-button" type="button" @click = "Checkout()">Check Out</button>
+            <div class = "col-sm-12">
+                <router-link to ="/"><button class = " btn bck-button" type="button">Back</button></router-link>
+        
             </div>
-            <div class = "col-sm-4"></div>
 
         </div>
         
@@ -85,8 +105,8 @@ export default{
             router.push('/')
         },
         getImg(file){
-            let images = require.context('../assets/', false, /\.jpg$/)
-            return images('./' + file)
+            let images = require.context('../assets/shoes/', false, /\.jpg$/)
+            return images('./' + file + '.jpg')
         },
         priceSum(){
             let allPrice = 0
@@ -105,6 +125,25 @@ export default{
 }
 </script>
 <style scoped>
+.cart-container{
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #ececec;
+    text-align: center
+}
+.cart-title{
+    font-size: 0.8em;
+    font-weight: 500;
+    margin-left: 1%;
+    margin-top: 2%
+}
+.cart-content{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center
+}
 .background{
     padding-top: 5%;
     height: 100vh
@@ -123,23 +162,38 @@ export default{
     font-weight: 600
 }
 .total{
-    text-align: center
+    text-align: right;
+    margin-right: 10%
 }
 .btm-button{
-    float: center;
+    float: right;
     margin-top: 1%;
-    margin-right: 5%;
-    width: 15vh;
-    height: 5vh
+    margin-right: 10%;
+    width: 25vh;
+    height: 5vh;
+    background-color: black;
+    color: white;
+}
+.bck-button{
+    float: right;
+    margin-top: 1%;
+    margin-right: 10%;
+    width: 25vh;
+    height: 5vh;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
 }
 .rm-button{
-    margin-top: 15%
+    margin-top: 35%;
+    border-radius: 50%;
+    float: right
 }
 .prod-title{
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 550;
-    margin-left: 5%;
-    margin-top: 2%
+    margin-left: 1%;
+    margin-top: 3%
 }
 .prod-info{
     font-size: 1.5em;
@@ -154,7 +208,7 @@ export default{
     min-height: 20vh;
 }
 .prod-img{
-    width: 200px;
-    height: 200px
+    width: 150px;
+    height: 150px
 }
 </style>

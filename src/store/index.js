@@ -1,14 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
-
+async function getProductData(){
+  let shoesData = await axios.get('https://my-json-server.typicode.com/megasuartika/fe-assignment/db')
+  .then((res)=>res.data).then(data=> data.shoes)
+  return shoesData
+}
 export default new Vuex.Store({
   state: {
     currentProduct: {},
     CartList:[],
     totalPrice: 0,
-    products: [
+    products: getProductData()/*[
       {
         id: 1,
         name: "Product 1",
@@ -37,7 +42,7 @@ export default new Vuex.Store({
         img: 'cake4.jpg',
         desc:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
       },
-    ]
+    ]*/
   },
   getters:{
     getProductDetails(state){
@@ -48,18 +53,29 @@ export default new Vuex.Store({
     },
     getTotalPrice(state){
       return state.totalPrice
+    },
+    getProducts(state){
+      return state.products
     }
   },
   mutations: {
-    getProduct(state, id){
-      console.log('initiating getProduct ' + id)
-      state.currentProduct = state.products.find(data => data.id === id)
+    getActualProduct(state, data){
+      state.currentProduct = data
+      console.log(state.currentProduct)
+    },
+    getProduct(state, name){
+      console.log('initiating getProduct ' + name)
+      for (let product of state.products){
+        if(product.name === name){
+          state.currentProduct = product
+        }
+      }//state.currentProduct = state.products.find(data => data.name === name)
       console.log('this here is return ')
       console.log(state.currentProduct)
       return state.currentProduct//state.currentProduct
     },
-    AddtoCart(state){
-      state.CartList.push(state.currentProduct)
+    AddtoCart(state, prod){
+      state.CartList.push(prod)
       console.log(state.CartList)
 
     },

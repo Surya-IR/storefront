@@ -1,31 +1,8 @@
 <template>
   <div id="app">
-    <div class = "row upper-nav">
-        <div class = "col-sm-5">
-            <h2 class = "nav-header">WELCOME TO OUR STOREFRONT</h2>
-        </div>
-    </div>
+    
     <router-view/>
-    <div id = "footer">
-      <div class ="row">
-          <div class = "col-sm-5">
-            <h3 class = "footer-c">STOREFRONT 2021 ALL RIGHTS RESERVED</h3>
-          </div>
-          <div class = "col-sm-7">
-            <h3 class = "footer-l-c">FOLLOW US AT</h3>
-          </div>
-              <div class = "col-sm-12">
-                <img class = "smlogo" src="./assets/fblogo.png" alt = "sosmed"/>
-                <img class = "smlogo" src="./assets/iglogo.png" alt = "sosmed"/>
-                <img class = "smlogo" src="./assets/twitterlogo.png" alt = "sosmed"/>
-              </div>
-              <div class = "col-sm-3"></div>
-              <div class = "col-sm-3"></div>
-
-          
-      </div>
-      
-    </div>
+    
   </div>
 </template>
 
