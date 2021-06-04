@@ -100,10 +100,16 @@ export default{
 <style scoped>
 @media only screen and (max-width: 480px){
 .prod-body{
-    width: 40%;
+    width: 80px;
     float: left;
     margin-top: 2%;
     margin-left: 5%;
+}
+.main-format{
+    margin-top: 1%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap:wrap
 }
 }
 .background{
