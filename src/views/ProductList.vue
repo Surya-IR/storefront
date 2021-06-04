@@ -98,7 +98,7 @@ export default{
 }
 </script>
 <style scoped>
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 600px){
 .prod-body{
     width: 80px;
     float: left;
