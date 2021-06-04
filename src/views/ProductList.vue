@@ -98,7 +98,14 @@ export default{
 }
 </script>
 <style scoped>
-
+@media(max-width: 480px){
+.prod-body{
+    width: 40%;
+    float: left;
+    margin-top: 2%;
+    margin-left: 5%;
+}
+}
 .background{
     padding-top: 5%;
     padding-bottom: 5%;
