@@ -98,19 +98,17 @@ export default{
 }
 </script>
 <style scoped>
-@media only screen and (max-width: 600px){
-.prod-body{
+.prod-body-mob{
     width: 80px;
     float: left;
     margin-top: 2%;
     margin-left: 5%;
 }
-.main-format{
+.main-format-mob{
     margin-top: 1%;
     margin-left: 5%;
     display: flex;
     flex-wrap:wrap
-}
 }
 .background{
     padding-top: 5%;
@@ -187,6 +185,7 @@ export default{
     width: 90%;
     height: 70%;
     margin-left: 2%;
-    margin-bottom: 5%
+    margin-bottom: 5%;
+    cursor: pointer
 }
 </style>
